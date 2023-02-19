@@ -1,25 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Route, Routes} from "react-router";
+
+import {MainPage} from "./pages/MainPage";
+import {EventsPage} from "./pages/EventsPage";
+import {OrganizationsPage} from "./pages/OrganizationsPage";
+import {Layout} from "./components/Layout";
+import {Employees} from "./pages/Employees";
+import {Notes} from "./pages/Notes";
+import {Statistics} from "./pages/Statistics";
+import {Fertilizer} from "./pages/Fertilizer";
+import {Weather} from "./pages/Weather";
+import {UserPage} from "./pages/UserPage";
+
+import styles from "./App.module.css";
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className={styles.container}>
+        <Routes>
+          <Route path={"/"} element={<Layout />}>
+              <Route index element={<MainPage />} />
+              <Route path={"user"} element={<UserPage />} />
+              <Route path={"events"} element={<EventsPage />} />
+              <Route path={"employees"} element={<Employees />} />
+              <Route path={"notes"} element={<Notes />} />
+              <Route path={"statistics"} element={<Statistics />} />
+              <Route path={"fertilizer"} element={<Fertilizer />} />
+              <Route path={"weather"} element={<Weather />} />
+              <Route path={"organizations"} element={<OrganizationsPage />} />
+          </Route>
+        </Routes>
+      </div>
   );
 }
 
